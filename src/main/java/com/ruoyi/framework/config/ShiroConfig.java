@@ -20,7 +20,7 @@ import com.ruoyi.framework.shiro.realm.UserRealm;
 import com.ruoyi.framework.shiro.session.OnlineSessionDAO;
 import com.ruoyi.framework.shiro.session.OnlineSessionFactory;
 import com.ruoyi.framework.shiro.web.filter.LogoutFilter;
-import com.ruoyi.framework.shiro.web.filter.captcha.CaptchaValidateFilter;
+//import com.ruoyi.framework.shiro.web.filter.captcha.CaptchaValidateFilter;
 import com.ruoyi.framework.shiro.web.filter.online.OnlineSessionFilter;
 import com.ruoyi.framework.shiro.web.filter.sync.SyncOnlineSessionFilter;
 import com.ruoyi.framework.shiro.web.session.OnlineWebSessionManager;
@@ -247,17 +247,18 @@ public class ShiroConfig
         filterChainDefinitionMap.put("/ruoyi/**", "anon");
         filterChainDefinitionMap.put("/druid/**", "anon");
         filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
+        filterChainDefinitionMap.put("/typhoon/**", "anon");
         // 退出 logout地址，shiro去清除session
         filterChainDefinitionMap.put("/logout", "logout");
         // 不需要拦截的访问
-        filterChainDefinitionMap.put("/login", "anon,captchaValidate");
+//        filterChainDefinitionMap.put("/login", "anon,captchaValidate");
         // 系统权限列表
         // filterChainDefinitionMap.putAll(SpringUtils.getBean(IMenuService.class).selectPermsAll());
 
         Map<String, Filter> filters = new LinkedHashMap<>();
         filters.put("onlineSession", onlineSessionFilter());
         filters.put("syncOnlineSession", syncOnlineSessionFilter());
-        filters.put("captchaValidate", captchaValidateFilter());
+       // filters.put("captchaValidate", captchaValidateFilter());
         // 注销成功，则跳转到指定页面
         filters.put("logout", logoutFilter());
         shiroFilterFactoryBean.setFilters(filters);
@@ -294,13 +295,13 @@ public class ShiroConfig
      * 自定义验证码过滤器
      */
     @Bean
-    public CaptchaValidateFilter captchaValidateFilter()
-    {
-        CaptchaValidateFilter captchaValidateFilter = new CaptchaValidateFilter();
-        captchaValidateFilter.setCaptchaEnabled(captchaEnabled);
-        captchaValidateFilter.setCaptchaType(captchaType);
-        return captchaValidateFilter;
-    }
+//    public CaptchaValidateFilter captchaValidateFilter()
+//    {
+//        CaptchaValidateFilter captchaValidateFilter = new CaptchaValidateFilter();
+//        captchaValidateFilter.setCaptchaEnabled(captchaEnabled);
+//        captchaValidateFilter.setCaptchaType(captchaType);
+//        return captchaValidateFilter;
+//    }
 
     /**
      * cookie 属性设置

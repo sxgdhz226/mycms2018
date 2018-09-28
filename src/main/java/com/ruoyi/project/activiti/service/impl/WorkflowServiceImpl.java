@@ -19,8 +19,6 @@ import java.util.Map;
 @Service("WorkflowServiceImpl")
 public class WorkflowServiceImpl implements IWorkflowService {
 
-    @Autowired
-    private RuntimeService runtimeService;
 
     @Override
     public void saveNewDeploye(File file, String filename) {

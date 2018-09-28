@@ -1,17 +1,25 @@
 package com.ruoyi;
 
+import org.activiti.spring.boot.SecurityAutoConfiguration;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * 启动程序
  * 
  * @author ruoyi
  */
-@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
+@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class, SecurityAutoConfiguration.class })
+//@ComponentScan({"org.activiti.rest.diagram"})
 @MapperScan("com.ruoyi.project.*.*.mapper")
+@EnableScheduling
+@EnableCaching   //开启redis  cache缓存
 public class RuoYiApplication
 {
     public static void main(String[] args)

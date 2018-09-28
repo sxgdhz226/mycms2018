@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,6 +58,7 @@ public class MenuController extends BaseController
     @Log(title = "菜单管理", businessType = BusinessType.DELETE)
     @RequiresPermissions("system:menu:remove")
     @PostMapping("/remove/{menuId}")
+    @CacheEvict(key = "'menu_'+menu")
     @ResponseBody
     public AjaxResult remove(@PathVariable("menuId") Long menuId)
     {
@@ -74,6 +77,7 @@ public class MenuController extends BaseController
      * 新增
      */
     @GetMapping("/add/{parentId}")
+    @Cacheable(key = "'menu_'+menu")
     public String add(@PathVariable("parentId") Long parentId, ModelMap mmap)
     {
         Menu menu = null;
@@ -98,6 +102,7 @@ public class MenuController extends BaseController
     @RequiresPermissions("system:menu:add")
     @PostMapping("/add")
     @ResponseBody
+    @Cacheable(key = "'menu_'+menu")
     public AjaxResult addSave(Menu menu)
     {
         return toAjax(menuService.insertMenu(menu));
