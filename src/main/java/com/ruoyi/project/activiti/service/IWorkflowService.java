@@ -6,6 +6,7 @@ import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.task.Comment;
 import org.activiti.engine.task.Task;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.InputStream;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface IWorkflowService {
-    void saveNewDeploye(File file, String filename);
+    void saveNewDeploye(MultipartFile file, String filename);
 
     List<Deployment> findDeploymentList();
 

@@ -3,6 +3,7 @@ package com.ruoyi.project.activiti.service.impl;
 import com.ruoyi.project.activiti.entity.LeaveBill;
 import com.ruoyi.project.activiti.entity.WorkflowBean;
 import com.ruoyi.project.activiti.service.IWorkflowService;
+import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
@@ -10,29 +11,41 @@ import org.activiti.engine.task.Comment;
 import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipInputStream;
 
 @Service("WorkflowServiceImpl")
 public class WorkflowServiceImpl implements IWorkflowService {
 
+    @Autowired
+    private RepositoryService repositoryService;
 
     @Override
-    public void saveNewDeploye(File file, String filename) {
-
+    public void saveNewDeploye(MultipartFile file, String filename) {
+        try {
+            ZipInputStream zipInputStream = new ZipInputStream(file.getInputStream());
+            repositoryService.createDeployment().name(filename)
+                    .addZipInputStream(zipInputStream).deploy();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public List<Deployment> findDeploymentList() {
-        return null;
+        return repositoryService.createDeploymentQuery().orderByDeploymenTime().asc().list();
     }
 
     @Override
     public List<ProcessDefinition> findProcessDefinitionList() {
-        return null;
+
+        return repositoryService.createProcessDefinitionQuery().orderByProcessDefinitionVersion().asc().list();
     }
 
     @Override

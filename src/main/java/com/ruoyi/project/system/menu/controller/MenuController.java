@@ -77,7 +77,7 @@ public class MenuController extends BaseController
      * 新增
      */
     @GetMapping("/add/{parentId}")
-    @Cacheable(key = "'menu_'+menu")
+//    @Cacheable(key = "'menu_'+menu")
     public String add(@PathVariable("parentId") Long parentId, ModelMap mmap)
     {
         Menu menu = null;
@@ -102,7 +102,7 @@ public class MenuController extends BaseController
     @RequiresPermissions("system:menu:add")
     @PostMapping("/add")
     @ResponseBody
-    @Cacheable(key = "'menu_'+menu")
+//    @Cacheable(key = "'menu_'+menu")
     public AjaxResult addSave(Menu menu)
     {
         return toAjax(menuService.insertMenu(menu));

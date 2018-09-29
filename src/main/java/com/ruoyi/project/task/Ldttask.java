@@ -37,7 +37,7 @@ public class Ldttask {
 	 * 雷达图
 	 */
 	
-	@Scheduled(cron="0 0/6 * * * ?")
+	@Scheduled(cron="0 0/1 * * * ?")
 	public  void getsldt(){
 		logger.info("执行下载省雷达图01定时任务");
 		Shengldt.a();

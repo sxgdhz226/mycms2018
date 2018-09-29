@@ -24,15 +24,16 @@
 					</div>
 				</form>
 			</div>
-			
-	        <div class="btn-group hidden-xs" id="toolbar" role="group">
-		        <a class="btn btn-outline btn-success btn-rounded" onclick="$.operate.add()" shiro:hasPermission="system:config:add">
-		            <i class="fa fa-plus"></i> 新增
-		        </a>
-		        <a class="btn btn-outline btn-danger btn-rounded" onclick="$.operate.removeAll()" shiro:hasPermission="system:config:remove">
-		            <i class="fa fa-trash-o"></i> 删除
-		        </a>
-	        </div>
+
+			<div class="btn-group hidden-xs" id="toolbar" role="group">
+				<form id="uploadForm" enctype="multipart/form-data" action="/activiti/uploadFile" method="post">
+					<input type="file" id="file" name="processFile">
+					<!--<a class="btn btn-outline btn-danger btn-rounded" id="upload">-->
+						<!--<i class="fa fa-trash-o"></i> 上传-->
+					<!--</a>-->
+					<input type="submit" value="上传">
+				</form>
+			</div>
 	        <div class="col-sm-12 select-table table-striped">
 	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
 	        </div>
@@ -43,7 +44,7 @@
         var editFlag = [[${@permission.hasPermi('system:config:edit')}]];
         var removeFlag = [[${@permission.hasPermi('system:config:remove')}]];
         var datas = [[${@dict.getType('sys_yes_no')}]];
-        var prefix = ctx + "system/config"
+        var prefix = ctx + "activiti"
 
         $(function() {
             var options = {
@@ -61,27 +62,27 @@
                     checkbox: true
                 },
                 {
-                    field: 'configId',
+                    field: 'name',
                     title: '名称'
                 },
                 {
-                    field: 'configName',
+                    field: 'key',
                     title: '流程定义的KEY'
                 },
                 {
-                    field: 'configKey',
+                    field: 'version',
                     title: '流程定义的版本'
                 },
                 {
-                    field: 'configValue',
+                    field: 'resourceName',
                     title: '流程定义的规则文件名称'
                 },
 				{
-					field: 'configValue',
+					field: 'deploymentId',
 					title: '部署ID'
 				},
                 {
-                    field: 'configType',
+                    field: 'diagramResourceName',
                     title: '流程定义的规则图片名称'
                 },
                 {
@@ -97,6 +98,23 @@
             };
             $.table.init(options);
         });
+
+        $('#upload').on('click', function(){
+            var img = $("#file").val();
+            alert(img);
+            var formdata = new FormData();
+            formdata.append("processFile", img);
+            $.ajax({
+                url: ctx + "activiti/uploadFile",
+                data: formdata,
+                type: "post",
+                processData: false,
+                contentType: false,
+                success: function(result) {
+                    $.operate.saveSuccess(result);
+                }
+            })
+        })
     </script>
 </body>
 </html>

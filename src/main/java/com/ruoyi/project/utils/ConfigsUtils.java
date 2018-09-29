@@ -1,5 +1,9 @@
 package com.ruoyi.project.utils;
 
+import org.springframework.util.ResourceUtils;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -37,9 +41,9 @@ public class ConfigsUtils {
 	static Properties prop = null;
 	static {
 		prop = new Properties();
-		InputStream in = ConfigsUtils.class
-				.getResourceAsStream("/configs/properties/configs.properties");
 		try {
+			File file = ResourceUtils.getFile("classpath:properties/configs.properties");
+			InputStream in = new FileInputStream(file);
 			prop.load(in);
 			in.close();
 		} catch (IOException e) {

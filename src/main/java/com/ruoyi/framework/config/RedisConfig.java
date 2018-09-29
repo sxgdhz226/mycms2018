@@ -27,8 +27,8 @@ public class RedisConfig  extends CachingConfigurerSupport {
      * 必须配置缓存管理器否则不生效
      * @return
      */
-    @Bean
-    public CacheManager cacheManager() {
-        return new ConcurrentMapCacheManager("'menu_'+menu");
-    }
+//    @Bean
+//    public CacheManager cacheManager() {
+//        return new ConcurrentMapCacheManager("'menu_'+menu");
+//    }
 }
