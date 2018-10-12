@@ -70,6 +70,7 @@ spring:
 #activiti
 activiti:
  check-process-definitions: false
+ database-schema-update: true   #自动创建表如果表不存在，act_ge_property三条记录不能删除否则抛空指针异常
 
 #profiles:
 #    active: dev

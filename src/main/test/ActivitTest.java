@@ -9,8 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = ActivitTest.class)
@@ -32,7 +30,7 @@ public class ActivitTest {
     @Test
     public void createDeployment() {
         DeploymentBuilder builder = repositoryService.createDeployment();
-        builder.addClasspathResource("processes/myactiviti.bpmn");
+        builder.addClasspathResource("processes/myactiviti.xml");
         builder.addClasspathResource("processes/myactiviti.png");
         Deployment deploy = builder.deploy();
         System.out.println("布署id=" + deploy.getId());

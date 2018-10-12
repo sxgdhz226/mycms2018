@@ -66,6 +66,9 @@ public class LeaveBill {
 	}
 
 	public User getUser() {
+		if (user == null)
+			this.user = new User();
+
 		return user;
 	}
 

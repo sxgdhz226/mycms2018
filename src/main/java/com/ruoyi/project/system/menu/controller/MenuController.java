@@ -45,6 +45,7 @@ public class MenuController extends BaseController
 
     @RequiresPermissions("system:menu:list")
     @GetMapping("/list")
+    @Cacheable(keyGenerator = "keyGenerator",value = "menuCache")
     @ResponseBody
     public List<Menu> list(Menu menu)
     {
@@ -77,7 +78,6 @@ public class MenuController extends BaseController
      * 新增
      */
     @GetMapping("/add/{parentId}")
-//    @Cacheable(key = "'menu_'+menu")
     public String add(@PathVariable("parentId") Long parentId, ModelMap mmap)
     {
         Menu menu = null;
@@ -97,12 +97,14 @@ public class MenuController extends BaseController
 
     /**
      * 新增保存菜单
+     *   value属性是必须指定的，其表示当前方法的返回值是会被缓存在哪个Cache上的，对应Cache的名称
+     *   keyGenerator自定义key生成策略
      */
     @Log(title = "菜单管理", businessType = BusinessType.INSERT)
     @RequiresPermissions("system:menu:add")
     @PostMapping("/add")
     @ResponseBody
-//    @Cacheable(key = "'menu_'+menu")
+    @CacheEvict(keyGenerator = "keyGenerator",value = "menuCache")
     public AjaxResult addSave(Menu menu)
     {
         return toAjax(menuService.insertMenu(menu));
@@ -112,6 +114,7 @@ public class MenuController extends BaseController
      * 修改菜单
      */
     @GetMapping("/edit/{menuId}")
+    @CacheEvict(keyGenerator = "keyGenerator",value = "menuCache")
     public String edit(@PathVariable("menuId") Long menuId, ModelMap mmap)
     {
         mmap.put("menu", menuService.selectMenuById(menuId));

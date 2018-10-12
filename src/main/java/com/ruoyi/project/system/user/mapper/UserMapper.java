@@ -1,6 +1,8 @@
 package com.ruoyi.project.system.user.mapper;
 
 import com.ruoyi.project.system.user.domain.User;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
@@ -106,4 +108,6 @@ public interface UserMapper
      * @return 结果
      */
     public User checkEmailUnique(String email);
+
+    public List<User> selectUser(@Param("name") String name);
 }

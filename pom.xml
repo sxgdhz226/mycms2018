@@ -343,6 +343,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<fork>true</fork> <!-- 如果没有该配置，devtools不会生效 -->
+					<addResources>true</addResources>
 				</configuration>
 			</plugin>
 		</plugins>

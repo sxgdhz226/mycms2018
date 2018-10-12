@@ -13,7 +13,7 @@ public class YunTuTask {
 	/**
 	 * 可见光卫星云图
 	 */
-	@Scheduled(cron="0 0/1 * * * ?")
+//	@Scheduled(cron="0 0/1 * * * ?")
 	public void getGYt(){
 		logger.info("执行下载可见光卫星云图定时任务");
 	    GuangYt g = new GuangYt();
@@ -22,7 +22,7 @@ public class YunTuTask {
 	/**
 	 * 紫外线卫星云图
 	 */
-	@Scheduled(cron="0 0/20 * * * ?")
+//	@Scheduled(cron="0 0/20 * * * ?")
 	public void getZYt(){
 		logger.info("执行下载紫外线卫星云图定时任务");
 		ZaiWaiYt z = new ZaiWaiYt();

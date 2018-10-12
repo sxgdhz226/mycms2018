@@ -37,7 +37,7 @@ public class Ldttask {
 	 * 雷达图
 	 */
 	
-	@Scheduled(cron="0 0/1 * * * ?")
+//	@Scheduled(cron="0 0/1 * * * ?")
 	public  void getsldt(){
 		logger.info("执行下载省雷达图01定时任务");
 		Shengldt.a();
@@ -45,7 +45,7 @@ public class Ldttask {
 	/**
 	 * 雷达图
 	 */
-	@Scheduled(cron="0 0/6 * * * ?")
+//	@Scheduled(cron="0 0/6 * * * ?")
 	public void getsldt02(){
 		logger.info("执行下载省雷达图02定时任务");
 		Shengldt02.a();
@@ -61,7 +61,7 @@ public class Ldttask {
 	/**
 	 * 雷达图
 	 */
-	@Scheduled(cron="0 0/6 * * * ?")
+//	@Scheduled(cron="0 0/6 * * * ?")
 	public void ldtappic(){
 		logger.info("执行下载组合雷达图任务");
 		CopyLdtUtil.CopyLdt();
