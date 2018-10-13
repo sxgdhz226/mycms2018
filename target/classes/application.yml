@@ -72,6 +72,10 @@ activiti:
  check-process-definitions: false
  database-schema-update: true   #自动创建表如果表不存在，act_ge_property三条记录不能删除否则抛空指针异常
 
+# solr
+data:
+ solr:
+  zk-host: 192.168.19.129:2181,192.168.19.129:2182,192.168.19.129:2183
 #profiles:
 #    active: dev
 
@@ -160,3 +164,4 @@ gen:
   autoRemovePre: true
   # 表前缀(类名不会包含表前缀)
   tablePrefix: sys_
+

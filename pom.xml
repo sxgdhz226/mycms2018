@@ -36,7 +36,7 @@
 		<kaptcha.version>2.3.2</kaptcha.version>
 		<swagger.version>2.7.0</swagger.version>
 		<jsoup.version>1.11.3</jsoup.version>
-		<spring.data.solr.version>1.5.9.RELEASE</spring.data.solr.version>
+		<spring.data.solr.version>2.1.1.RELEASE</spring.data.solr.version>
 	</properties>
 
 	<dependencies>

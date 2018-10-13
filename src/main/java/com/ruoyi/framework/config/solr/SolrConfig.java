@@ -7,15 +7,16 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SolrConfig {
-//    @Value("${spring.data.solr.zk-host}")
-//    private String zkHost;
-//
-//    @Bean
-//    public CloudSolrClient cloudSolrClient(){
-//        // 创建集群客户端
-//        CloudSolrClient cloudSolrClient = new CloudSolrClient.Builder().withZkHost(zkHost).build();
-//        // 设置默认的索引库
-//        cloudSolrClient.setDefaultCollection("zk_server");
-//        return cloudSolrClient;
-//    }
+
+    @Value("${data.solr.zk-host}")
+    private String zkHost;
+
+    @Bean
+    public CloudSolrClient cloudSolrClient(){
+        // 创建集群客户端
+        CloudSolrClient cloudSolrClient = new CloudSolrClient.Builder().withZkHost(zkHost).build();
+        // 设置默认的索引库
+        cloudSolrClient.setDefaultCollection("zk_server");
+        return cloudSolrClient;
+    }
 }

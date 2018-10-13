@@ -45,7 +45,7 @@ public class MenuController extends BaseController
 
     @RequiresPermissions("system:menu:list")
     @GetMapping("/list")
-    @Cacheable(keyGenerator = "keyGenerator",value = "menuCache")
+    @Cacheable(key = "'menu_'+#menu",value = "menuCache")
     @ResponseBody
     public List<Menu> list(Menu menu)
     {
@@ -59,7 +59,7 @@ public class MenuController extends BaseController
     @Log(title = "菜单管理", businessType = BusinessType.DELETE)
     @RequiresPermissions("system:menu:remove")
     @PostMapping("/remove/{menuId}")
-    @CacheEvict(key = "'menu_'+menu")
+    @CacheEvict(key = "'menu_'+#menu",value = "menuCache")
     @ResponseBody
     public AjaxResult remove(@PathVariable("menuId") Long menuId)
     {
@@ -78,6 +78,7 @@ public class MenuController extends BaseController
      * 新增
      */
     @GetMapping("/add/{parentId}")
+    @CacheEvict(key = "'menu_'+#menu",value = "menuCache")
     public String add(@PathVariable("parentId") Long parentId, ModelMap mmap)
     {
         Menu menu = null;
@@ -104,7 +105,7 @@ public class MenuController extends BaseController
     @RequiresPermissions("system:menu:add")
     @PostMapping("/add")
     @ResponseBody
-    @CacheEvict(keyGenerator = "keyGenerator",value = "menuCache")
+    @CacheEvict(key = "'menu_'+#menu",value = "menuCache")
     public AjaxResult addSave(Menu menu)
     {
         return toAjax(menuService.insertMenu(menu));
@@ -114,7 +115,7 @@ public class MenuController extends BaseController
      * 修改菜单
      */
     @GetMapping("/edit/{menuId}")
-    @CacheEvict(keyGenerator = "keyGenerator",value = "menuCache")
+    @CacheEvict(key = "'menu_'+#menu",value = "menuCache")
     public String edit(@PathVariable("menuId") Long menuId, ModelMap mmap)
     {
         mmap.put("menu", menuService.selectMenuById(menuId));
@@ -128,6 +129,7 @@ public class MenuController extends BaseController
     @RequiresPermissions("system:menu:edit")
     @PostMapping("/edit")
     @ResponseBody
+    @CacheEvict(key = "'menu_'+#menu",value = "menuCache")
     public AjaxResult editSave(Menu menu)
     {
         return toAjax(menuService.updateMenu(menu));

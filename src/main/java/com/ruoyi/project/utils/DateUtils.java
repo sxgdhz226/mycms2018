@@ -677,6 +677,22 @@ public class DateUtils {
 
     }
 
+    public static LocalDateTime parseStrDateToDate(String date,String format){
+        DateTimeFormatter dtf =  DateTimeFormatter.ofPattern(format);
+        return LocalDateTime.parse(date,dtf);
+    }
+
+    /**
+     * LocalDateTime转换为Date
+     * @param localDateTime
+     */
+    public static Date localDateTime2Date( LocalDateTime localDateTime){
+        ZoneId zoneId = ZoneId.systemDefault();
+        ZonedDateTime zdt = localDateTime.atZone(zoneId);//Combines this date-time with a time-zone to create a  ZonedDateTime.
+        return Date.from(zdt.toInstant());
+    }
+
+
     @Override
     public String toString() {
         return super.toString();
