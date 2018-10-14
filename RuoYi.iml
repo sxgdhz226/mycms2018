@@ -173,7 +173,6 @@
     <orderEntry type="library" name="Maven: de.odysseus.juel:juel-spi:2.2.7" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.9.9" level="project" />
     <orderEntry type="library" name="Maven: org.activiti:activiti-spring:6.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.0.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:5.0.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: commons-dbcp:commons-dbcp:1.4" level="project" />
     <orderEntry type="library" name="Maven: commons-pool:commons-pool:1.6" level="project" />
@@ -243,5 +242,11 @@
     <orderEntry type="library" name="Maven: org.noggit:noggit:0.6" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: com.caucho:hessian:4.0.51" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.kafka:spring-kafka:2.1.8.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.0.8.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.retry:spring-retry:1.2.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.kafka:kafka-clients:1.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.lz4:lz4-java:1.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xerial.snappy:snappy-java:1.1.4" level="project" />
   </component>
 </module>

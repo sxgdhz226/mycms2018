@@ -41,6 +41,22 @@ user:
 
 # Spring配置
 spring:
+  kafka:
+   consumer:
+    bootstrap-servers: 192.168.19.129:9092
+    group-id: myGroup
+    auto-offset-reset: earliest
+    enable-auto-commit: true
+    auto-commit-interval: 100
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+   producer:
+    retries: 0
+    batch-size: 16384
+    buffer-memory: 33554432
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    bootstrap-servers: 192.168.19.129:9092
   # 模板引擎
   thymeleaf:
     mode: HTML
@@ -76,9 +92,27 @@ activiti:
 data:
  solr:
   zk-host: 192.168.19.129:2181,192.168.19.129:2182,192.168.19.129:2183
+
 #profiles:
 #    active: dev
 
+# kafka
+#kafka:
+# consumer:
+#  bootstrap-servers: 192.168.19.129:9092
+#  group-id: myGroup
+#  auto-offset-reset: earliest
+#  enable-auto-commit: true
+#  auto-commit-interval: 100
+#  key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#  value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+# producer:
+#  retries: 0
+#  batch-size: 16384
+#  buffer-memory: 33554432
+#  key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#  value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#  bootstrap-servers: 192.168.19.129:9092
 
 # MyBatis
 mybatis:
