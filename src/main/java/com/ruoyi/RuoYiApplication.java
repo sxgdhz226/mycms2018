@@ -5,7 +5,9 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.boot.autoconfigure.solr.SolrAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -17,10 +19,13 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 /**
  * 启动程序
+ * MongoAutoConfiguration注解可以禁用springboot自带的配置。否则默认链接test数据库
  * 
  * @author ruoyi
  */
-@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class, SecurityAutoConfiguration.class,SolrAutoConfiguration.class })
+@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class,
+        SecurityAutoConfiguration.class,SolrAutoConfiguration.class,
+        MongoAutoConfiguration.class,MongoDataAutoConfiguration.class})
 //@ComponentScan({"org.activiti.rest.diagram"})
 @MapperScan("com.ruoyi.project.*.*.mapper")
 @EnableScheduling

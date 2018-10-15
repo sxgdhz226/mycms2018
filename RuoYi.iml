@@ -248,5 +248,6 @@
     <orderEntry type="library" name="Maven: org.apache.kafka:kafka-clients:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.lz4:lz4-java:1.4" level="project" />
     <orderEntry type="library" name="Maven: org.xerial.snappy:snappy-java:1.1.4" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.16.10" level="project" />
   </component>
 </module>

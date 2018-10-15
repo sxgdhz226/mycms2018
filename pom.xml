@@ -333,9 +333,17 @@
 			<version>4.0.51</version>
 		</dependency>
 
+		<!--kafka-->
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
+		</dependency>
+
+		<!--lombok-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.10</version>
 		</dependency>
 
 	</dependencies>
