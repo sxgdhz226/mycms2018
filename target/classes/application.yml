@@ -82,6 +82,14 @@ spring:
     restart:
       # 热部署开关
       enabled: true
+ #指定springjpa数据库为mysql
+  jpa:
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
 
 #activiti
 activiti:

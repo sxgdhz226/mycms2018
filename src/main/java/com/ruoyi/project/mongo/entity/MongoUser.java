@@ -39,11 +39,11 @@ public class MongoUser {
     @Transient
     private String phone;
 
-    @PersistenceConstructor
-    public MongoUser(Mainbody mainbody, Integer id, String name, Integer age) {
-        this.mainbody = mainbody;
-        this.id = id;
-        this.name = name;
-        this.age = age;
-    }
+//    @PersistenceConstructor
+//    public MongoUser(Mainbody mainbody, Integer id, String name, Integer age) {
+//        this.mainbody = mainbody;
+//        this.id = id;
+//        this.name = name;
+//        this.age = age;
+//    }
 }
