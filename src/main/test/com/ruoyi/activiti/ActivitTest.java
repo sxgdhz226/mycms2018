@@ -1,3 +1,5 @@
+package com.ruoyi.activiti;
+
 import org.activiti.engine.*;
 import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.repository.Deployment;
