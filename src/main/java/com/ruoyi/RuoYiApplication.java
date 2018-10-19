@@ -1,5 +1,6 @@
 package com.ruoyi;
 
+import com.ruoyi.project.servlet.MyServlet;
 import org.activiti.spring.boot.SecurityAutoConfiguration;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -9,6 +10,8 @@ import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfigurat
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.boot.autoconfigure.solr.SolrAutoConfiguration;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -30,6 +33,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @MapperScan("com.ruoyi.project.*.*.mapper")
 @EnableScheduling
 @EnableCaching   //开启redis  cache缓存
+@ServletComponentScan  //启动器启动时，扫描本目录以及子目录带有的webservlet注解的
 public class RuoYiApplication
 {
     public static void main(String[] args)
@@ -48,5 +52,15 @@ public class RuoYiApplication
     public TaskExecutor primaryTaskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         return executor;
+    }
+
+    /**
+     * 注册servlet
+     */
+    @Bean
+    public ServletRegistrationBean getServletRegistrationBean(){
+        ServletRegistrationBean bean = new ServletRegistrationBean(new MyServlet());     //放入自己的Servlet对象实例
+        bean.addUrlMappings("/myServlet");  //访问路径值
+        return bean;
     }
 }
