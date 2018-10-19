@@ -84,7 +84,8 @@ spring:
       enabled: true
  #指定springjpa数据库为mysql
   jpa:
-    database: MYSQL
+    database: POSTGRESQL
+    show-sql: true
     hibernate:
       ddl-auto: update
     properties:

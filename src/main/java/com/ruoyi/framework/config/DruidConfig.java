@@ -20,6 +20,7 @@ import com.ruoyi.framework.datasource.DynamicDataSource;
 @Configuration
 public class DruidConfig
 {
+    @Primary
     @Bean
     @ConfigurationProperties("spring.datasource.druid.master")
     public DataSource masterDataSource()
@@ -35,13 +36,26 @@ public class DruidConfig
         return DruidDataSourceBuilder.create().build();
     }
 
+    /**
+     *   enabled = true  时候这个bean才生效
+     * @return
+     */
+    @Bean
+    @ConfigurationProperties("spring.secondary.datasource.ds1")
+    @ConditionalOnProperty(prefix = "spring.secondary.datasource.ds1", name = "enabled", havingValue = "true")
+    public DataSource thirdDataSource()
+    {
+        return DruidDataSourceBuilder.create().build();
+    }
+
+
     @Bean(name = "dynamicDataSource")
-    @Primary
-    public DynamicDataSource dataSource(DataSource masterDataSource, DataSource slaveDataSource)
+    public DynamicDataSource dataSource()
     {
         Map<Object, Object> targetDataSources = new HashMap<>();
-        targetDataSources.put(DataSourceType.MASTER.name(), masterDataSource);
-        targetDataSources.put(DataSourceType.SLAVE.name(), slaveDataSource);
-        return new DynamicDataSource(masterDataSource, targetDataSources);
+        targetDataSources.put(DataSourceType.MASTER.name(), thirdDataSource());
+        //targetDataSources.put(DataSourceType.SLAVE.name(), slaveDataSource());
+        targetDataSources.put(DataSourceType.THIRD.name(), thirdDataSource());
+        return new DynamicDataSource(masterDataSource(), targetDataSources);
     }
 }
