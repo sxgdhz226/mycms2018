@@ -25,7 +25,7 @@ import java.util.List;
 public class ZookeeperTest {
 	@Test
 	public void testCloseStatus() throws Exception {
-		ZooKeeper zk = new ZooKeeper("localhost:2181", 3000, null);
+		ZooKeeper zk = new ZooKeeper("192.168.19.129:2180", 3000, null);
 		int i = 1;
 		while (true) {
 			try {
@@ -41,7 +41,7 @@ public class ZookeeperTest {
 
 	@Test
 	public void testPrint() throws Exception {
-		ZooKeeper zk = new ZooKeeper("localhost:2181", 3000, null);
+		ZooKeeper zk = new ZooKeeper("192.168.19.129:2180", 3000, null);
 		StringWriter writer = new StringWriter();
 		ZKTools.printTree(zk, "/", writer, "\n");
 		System.out.println(writer.toString());
@@ -60,11 +60,11 @@ public class ZookeeperTest {
 
 	@Test
 	public void testCreateTask() throws Exception {
-		ZooKeeper zk = new ZooKeeper("localhost:2181", 3000, null);
+		ZooKeeper zk = new ZooKeeper("192.168.19.129:2180", 3000, null);
 		List<ACL> acls = new ArrayList<ACL>();
-		zk.addAuthInfo("digest", "ScheduleAdmin:password".getBytes());
+		zk.addAuthInfo("digest", "sxgdhz:sxgdhz".getBytes());
 		acls.add(new ACL(ZooDefs.Perms.ALL, new Id("digest",
-				DigestAuthenticationProvider.generateDigest("ScheduleAdmin:password"))));
+				DigestAuthenticationProvider.generateDigest("sxgdhz:sxgdhz"))));
 		acls.add(new ACL(ZooDefs.Perms.READ, Ids.ANYONE_ID_UNSAFE));
 		zk.create("/uncode/schedule/task/taskObj#print", new byte[0], acls, CreateMode.PERSISTENT);
 		zk.getData("/uncode/schedule/task/taskObj#print", false, null);
