@@ -16,7 +16,7 @@ public class MsgProducer {
 
     public void send(String key,String data) {
         try {
-            kafkaTemplate.send("firsttopic",data);
+            kafkaTemplate.send("mytopic",data);
             // kafkaTemplate.send("my-replicated-topic","key","xiaojf");
 
             kafkaTemplate.metrics();

@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
  * kafka消息消费者
  */
 @Component
-public class MsgConsumer {
+public class MsgConsumerListener {
 
-    @KafkaListener(topics = {"firsttopic"})
+    @KafkaListener(topics = {"mytopic"})
     public void processMessage(String content) {
         System.out.println(content+"==============================");
     }

@@ -7,10 +7,13 @@ import javax.persistence.Temporal;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 /**
  * Java 8 中将并行流进行了优化，我们可以很容易的对数据进行并行流的操作，
  * Stream API可以声明性的通过parallel()与sequential()在并行流与穿行流中随意切换！
+ * Java 8引入了三个原始类型特化流接口来解决这个问题： IntStream 、 DoubleStream 和 LongStream
+ * 映射到数值流：将流转换为特化版本的常用方法是mapToInt、mapToDouble和mapToLong
  */
 public class ForkJoinWorkDemo {
     @Test
