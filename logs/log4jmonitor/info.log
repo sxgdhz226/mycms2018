@@ -669,3 +669,6 @@
 2018-10-23 11:53:37.857 [] [] ERROR [http-nio-80-exec-8] <Sniff.java [32] - doGet> <This is error message.>
 2018-10-23 11:53:39.857 [] [] INFO [http-nio-80-exec-9] <Sniff.java [30] - doGet> <This is info message.>
 2018-10-23 11:53:39.857 [] [] ERROR [http-nio-80-exec-9] <Sniff.java [32] - doGet> <This is error message.>
+2018-10-23 14:47:34.516 [] [] INFO [http-nio-80-exec-11] <HessianController.java [36] - upload> <开始hessian上传>
+2018-10-23 14:49:05.824 [] [] INFO [http-nio-80-exec-1] <HessianController.java [36] - upload> <开始hessian上传>
+2018-10-23 14:49:05.838 [] [] INFO [http-nio-80-exec-1] <HessianController.java [42] - upload> <上传hessian成功>
